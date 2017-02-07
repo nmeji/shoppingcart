@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	sim "github.com/nmeji/exam/amaysim"
+	sim "github.com/nmeji/shoppingcart/amaysim"
 )
 
 type Command struct {
