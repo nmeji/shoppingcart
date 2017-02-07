@@ -34,12 +34,12 @@ func init() {
 		Description: "Show product catalog",
 	}
 	commands["add"] = &Command{
-		Usage:       "add item_id [quantity]",
+		Usage:       "add <id> [quantity]",
 		Description: "Adds item(s) to cart",
 		Run:         AddItem,
 	}
 	commands["promo"] = &Command{
-		Usage:       "promo code",
+		Usage:       "promo <code>",
 		Description: "Applies promo code",
 		Run:         UsePromo,
 	}
@@ -49,7 +49,7 @@ func init() {
 		Run:         ViewCart,
 	}
 	commands["remove"] = &Command{
-		Usage:       "remove item_id [quantity]",
+		Usage:       "remove <id> [quantity]",
 		Description: "Removes item(s) from cart",
 		Run:         RemoveItem,
 	}
@@ -67,7 +67,7 @@ func ShowHelp(s string) {
 		fmt.Println("List of all commands:")
 		fmt.Printf("%s\t\t\t\t%s\n", commands["catalog"].Usage, commands["catalog"].Description)
 		fmt.Printf("%s\t\t%s\n", commands["add"].Usage, commands["add"].Description)
-		fmt.Printf("%s\t%s\n", commands["remove"].Usage, commands["remove"].Description)
+		fmt.Printf("%s\t\t%s\n", commands["remove"].Usage, commands["remove"].Description)
 		fmt.Printf("%s\t\t\t\t%s\n", commands["cart"].Usage, commands["cart"].Description)
 		fmt.Printf("%s\t\t\t%s\n", commands["promo"].Usage, commands["promo"].Description)
 		fmt.Printf("%s\t\t\t%s\n", commands["help"].Usage, commands["help"].Description)

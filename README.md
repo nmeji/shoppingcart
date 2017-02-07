@@ -22,3 +22,14 @@ You may edit product-catalog.json to reflect changes to available products
 
 At first, I thought of implementing the rules in something like pricing-rules.json. But due to the extra overhead I opted to write it in rules.go instead.
 
+## Examples
+
+You can either run the commands in $GOPATH/src/github.com/nmeji/shoppingcart or you may also copy the product-catalog.json file from that folder and put it in some other directory. The important thing is to make sure that $GOBIN variable is already set. If it is not yet set, I think it is set by default to $GOPATH/bin directory.
+
+1. Run `shoppingcart` (This will search for product-catalog.json in the same folder)
+2. You may type `help` to list all available commands
+3. Just to provide you with some commands right away, here's a list of the important commands to remember:
+* Type `catalog` to show the different products and their prices.
+* In order to add items to cart, the usage is `add <id> [quantity]`
+* Use `cart` to show cart summary which provides you the total price and the total items you can expect to get after purchasing.
+* If you wish to apply a promo code, type `promo <code>` (eg. promo I<3AMAYSIM)
