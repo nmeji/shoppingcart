@@ -116,7 +116,7 @@ func RemoveItem(s string) {
 func ViewCart(s string) {
 	added := cart.ItemsAdded()
 	if len(added) == 0 {
-		fmt.Println("You haven't added any item to your cart.")
+		fmt.Println("You have no items in your cart.")
 		return
 	}
 	totalPrice := cart.Total()
@@ -124,6 +124,10 @@ func ViewCart(s string) {
 	fmt.Println("You've added,")
 	for _, item := range added {
 		fmt.Printf("%d x %s\n", item.Quantity, item.Name)
+	}
+	appliedCodes := cart.PromoCodesApplied()
+	for _, item := range appliedCodes {
+		fmt.Printf("'%s' Promo Applied\n", item)
 	}
 	fmt.Printf("\nTotal Price is $%.02f\n\n", totalPrice)
 	fmt.Println("Your total item(s):")

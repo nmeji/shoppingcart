@@ -16,6 +16,7 @@ type Cart interface {
 	Remove(item CartItem)
 	AddPromoCode(code string)
 	UsesPromoCode(code string) bool
+	PromoCodesApplied() []string
 	Total() float32
 	Items() []CartItem
 	ItemsAdded() map[string]*CartItem

@@ -22,6 +22,17 @@ func (cart ShoppingCart) UsesPromoCode(code string) bool {
 	return cart.PromoCode[code] == 1
 }
 
+func (cart ShoppingCart) PromoCodesApplied() []string {
+	if size := len(cart.PromoCode); size > 0 {
+		promoCodes := make([]string, 0, size)
+		for code, _ := range cart.PromoCode {
+			promoCodes = append(promoCodes, code)
+		}
+		return promoCodes
+	}
+	return nil
+}
+
 func (cart ShoppingCart) Remove(item CartItem) {
 	if i, ok := cart.Added[item.Code]; ok {
 		if q := item.Quantity - i.Quantity; q < 1 {
