@@ -1,0 +1,49 @@
+[
+  {
+    "Given": "ult_small",
+    "If": {
+        "quantity": {
+          "greater-than": 2
+        }
+      },
+    "Apply": {
+      "for-every": 3,
+      "set-price": {
+        "price-of": 2
+      }
+    }
+  },
+  {
+    "Given": "ult_medium",
+    "Apply": {
+      "for-every": 1,
+      "free": "1gb"
+    }
+  },
+  {
+    "Given": "ult_large",
+    "If": {
+      "quantity": {
+        "greater-than": 3
+      }
+    },
+    "Apply": {
+      "for-every": 1,
+      "set-price": {
+        "to": 39.90
+      }
+    }
+  },
+  {
+    "Given": "promo_code",
+    "If": {
+      "equals": "I<3AMAYSIM"
+    },
+    "Apply": {
+      "items": "all",
+      "set-price": {
+        "discount": "10%"
+      }
+    }
+  }
+]
