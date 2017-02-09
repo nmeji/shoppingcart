@@ -1,27 +1,42 @@
 package amaysim
 
+/*
+ShoppingCart is a Cart implementation
+*/
 type ShoppingCart struct {
 	PricingRules []Rule
 	Added        map[string]*CartItem
 	PromoCode    map[string]int
 }
 
-func (self ShoppingCart) Add(item CartItem) {
-	if i, ok := self.Added[item.Code]; ok {
+/*
+Add item(s) to the ShoppingCart
+*/
+func (cart ShoppingCart) Add(item CartItem) {
+	if i, ok := cart.Added[item.Code]; ok {
 		i.Quantity += item.Quantity
 	} else {
-		self.Added[item.Code] = &item
+		cart.Added[item.Code] = &item
 	}
 }
 
+/*
+AddPromoCode allows to set Promo Codes
+*/
 func (cart ShoppingCart) AddPromoCode(code string) {
 	cart.PromoCode[code] = 1
 }
 
+/*
+UsesPromoCode returns true if a specific code matches the set promo code(s)
+*/
 func (cart ShoppingCart) UsesPromoCode(code string) bool {
 	return cart.PromoCode[code] == 1
 }
 
+/*
+PromoCodesApplied returns a slice of all promo codes added
+*/
 func (cart ShoppingCart) PromoCodesApplied() []string {
 	if size := len(cart.PromoCode); size > 0 {
 		promoCodes := make([]string, 0, size)
@@ -33,16 +48,22 @@ func (cart ShoppingCart) PromoCodesApplied() []string {
 	return nil
 }
 
+/*
+Remove item(s) from the cart
+*/
 func (cart ShoppingCart) Remove(item CartItem) {
 	if i, ok := cart.Added[item.Code]; ok {
-		if q := item.Quantity - i.Quantity; q < 1 {
+		if q := i.Quantity - item.Quantity; q < 1 {
 			delete(cart.Added, item.Code)
 		} else {
-			item.Quantity = q
+			i.Quantity = q
 		}
 	}
 }
 
+/*
+Total computes all the sub total and applies the pricing rules if there is any and returns the sum of all sub totals
+*/
 func (cart ShoppingCart) Total() float32 {
 	for _, item := range cart.Added {
 		item.SubTotal = float32(item.Quantity) * item.Price
@@ -59,6 +80,9 @@ func (cart ShoppingCart) Total() float32 {
 	return TotalPrice
 }
 
+/*
+Items returns all the added items including the promo items
+*/
 func (cart ShoppingCart) Items() []CartItem {
 	copyItems := make(map[string]*CartItem)
 	for k, v := range cart.Added {
@@ -83,6 +107,9 @@ func (cart ShoppingCart) Items() []CartItem {
 	return items
 }
 
+/*
+ItemsAdded returns the items added by the client
+*/
 func (cart ShoppingCart) ItemsAdded() map[string]*CartItem {
 	return cart.Added
 }
