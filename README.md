@@ -29,7 +29,11 @@ You can either run the commands in $GOPATH/src/github.com/nmeji/shoppingcart or 
 1. Run `shoppingcart` (This will search for product-catalog.json in the same folder)
 2. You may type `help` to list all available commands
 3. Just to provide you with some commands right away, here's a list of the important commands to remember:
-* Type `catalog` to show the different products and their prices.
-* In order to add items to cart, the usage is `add <id> [quantity]`
-* Use `cart` to show cart summary which provides you the total price and the total items you can expect to get after purchasing.
-* If you wish to apply a promo code, type `promo <code>` (eg. promo I<3AMAYSIM)
+4. Type `catalog` to show the different products and their prices.
+5. In order to add items to cart, the usage is `add <id> [quantity]`
+6. Use `cart` to show cart summary which provides you the total price and the total items you can expect to get after purchasing.
+7. If you wish to apply a promo code, type `promo <code>` (eg. promo I<3AMAYSIM)
+
+## Tests and Coverage
+
+2 tests: amaysim/cart_test.go and amaysim/rules_test.go. In order to run both tests, run `go test -coverprofile=testprofile ./amaysim/`
