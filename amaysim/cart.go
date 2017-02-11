@@ -40,7 +40,7 @@ PromoCodesApplied returns a slice of all promo codes added
 func (cart ShoppingCart) PromoCodesApplied() []string {
 	if size := len(cart.PromoCode); size > 0 {
 		promoCodes := make([]string, 0, size)
-		for code, _ := range cart.PromoCode {
+		for code := range cart.PromoCode {
 			promoCodes = append(promoCodes, code)
 		}
 		return promoCodes

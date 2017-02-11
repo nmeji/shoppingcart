@@ -8,10 +8,14 @@ import (
 
 var catalog Products
 
+// Products is a slice of Product
 type Products struct {
 	Catalog []Product
 }
 
+/*
+InitProducts reads from a Reader and parses JSON format string to initialize Products
+*/
 func InitProducts(source io.Reader) (*Products, error) {
 	var products []Product
 	dec := json.NewDecoder(source)
@@ -31,6 +35,9 @@ func InitProducts(source io.Reader) (*Products, error) {
 	return &catalog, nil
 }
 
+/*
+PrintCatalog prints each Product to terminal
+*/
 func (p Products) PrintCatalog() {
 	display := "ID\tProduct Name\t\tPrice\n"
 	i := 1
@@ -41,6 +48,9 @@ func (p Products) PrintCatalog() {
 	fmt.Println(display)
 }
 
+/*
+Lookup is used to search for a product given the product code
+*/
 func (p Products) Lookup(code string) (*Product, error) {
 	for _, product := range p.Catalog {
 		if code == product.Code {
